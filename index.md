@@ -124,11 +124,12 @@ private void Start()
 ## Netcode for GameObjects support
 ### Getting Started
 To enable Netcode for GameObjects support, first, make sure the Netcode for GameObjects package is in your project and that it is compiling with no errors, then click the _Enable Netcode for GameObjects Support_ button on the ObjectQuerier. Then wait for the project to recompile. If the button state changes to Disable Netcode for GameObjects Support_, the process has been carried out correctly.
- ![NetcodeEnable](https://pressfstudios.github.io/assets/images/NGOEnable.png)
 
- **Note that doing this changes the `IdentifiableObject` and `ObjectQuerier` components to `NetworkBehaviour`, and will require `NetworkObject` components to be assigned to any object with either of those scripts assigned.**
+![NetcodeEnable](https://pressfstudios.github.io/assets/images/NGOEnable.png)
 
- #### Spawn with ID over Network
+**Note that doing this changes the `IdentifiableObject` and `ObjectQuerier` components to `NetworkBehaviour`, and will require `NetworkObject` components to be assigned to any object with either of those scripts assigned.**
+
+#### Spawn with ID over Network
 You can spawn an `IdentifiableObject` on all clients through a single spawn call (from Host or Server):
 ```c#
 public NetworkObject networkObjectPrefab;
