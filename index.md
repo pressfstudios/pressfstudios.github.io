@@ -13,15 +13,29 @@ public GameObject directObjectReference; //Only supports scene-scope references
 public IdentifiableObjectReference idBasedReference; //Supports across-scene references  
 ```
 
+The editor difference is as follows:
+
 ![Comparison](https://pressfstudios.github.io/assets/images/DefaultVsIdRef.png)
 
-The editor difference would then be as follows:
 
-## Header 2
+## Getting Started
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+1.  Import the _Unique Object ID Reference System_ package from your Unity Package Manager.
+2.  In the first scene to load in your project (for example a base/service scene or a main menu), add an empty GameObject and add the ObjectQuerier component to it.
+![Querier](https://pressfstudios.github.io/assets/images/Querier.png)
+3.  To begin referencing objects by ID, you can now add the _IdentifiableObject_ component to any scene object which you wish to add a unique ID to.
+![IdObject](https://pressfstudios.github.io/assets/images/IdObject.png)
+4.  Copy the ID of the identifiable object through the component you have just applied.
+![IdCopy](https://pressfstudios.github.io/assets/images/IdObject_Copy.png)
+5.  Alternatively, you can open the _Object Identifier Search_ window, search, and copy the code of any identifiable object in your project.
+![SearchCopy](https://pressfstudios.github.io/assets/images/CopyFromSearch.png)
+6.  Write a new line of code to create an instance of _IdentifiableObjectReference_ that will draw in the inspector. This can be done on any _MonoBehaviour_:
+```c#
+public IdentifiableObjectReference exampleObjectReference;
+```
+7.  Paste the code you previously copied into the inspector drawer of this newly created field.
+![ValidRef](https://pressfstudios.github.io/assets/images/ValidReference.png)
+
 
 ### Header 3
 
