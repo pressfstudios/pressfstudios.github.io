@@ -2,6 +2,8 @@
 layout: default
 ---
 
+Welcome to the Press F Studios public asset documentation page.
+
 # FId - Unique Object ID Reference System
 
 FId is a tool designed to replace direct object referencing where necessary, for example:
@@ -10,6 +12,8 @@ FId is a tool designed to replace direct object referencing where necessary, for
 public GameObject directObjectReference; //Only supports scene-scope references
 public IdentifiableObjectReference idBasedReference; //Supports across-scene references  
 ```
+
+The editor difference would then be as follows:
 
 ## Header 2
 
