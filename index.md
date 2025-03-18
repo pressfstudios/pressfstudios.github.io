@@ -4,6 +4,8 @@ layout: default
 
 Welcome to the Press F Studios public asset documentation page.
 
+* * *
+
 # FId - Unique Object ID Reference System
 
 FId is a tool designed to replace direct object referencing where necessary, for example:
@@ -39,7 +41,7 @@ public IdentifiableObjectReference exampleObjectReference;
 
 ## Code
 
-Using FId in code is extremely simple.
+Using FId in code is extremely simple. Every interaction follow a one-line approach.
 
 #### Object from ID
 Usually, objects are referenced and accessed as follows:
@@ -121,9 +123,11 @@ private void Start()
 ```
 **Be careful when using this. Assigning the same ID to multiple objects is not supported and trying to do so will cause errors. It is suggested that you always let IDs be randomised uless you are trying to re-spawn previously assigned IDs which you already know are unique (e.g. object IDs from a previous game session).**
 
+* * *
+
 ## Netcode for GameObjects support
 ### Getting Started
-To enable Netcode for GameObjects support, first, make sure the Netcode for GameObjects package is in your project and that it is compiling with no errors, then click the _Enable Netcode for GameObjects Support_ button on the ObjectQuerier. Then wait for the project to recompile. If the button state changes to Disable Netcode for GameObjects Support_, the process has been carried out correctly.
+To enable Netcode for GameObjects support, first, make sure the Netcode for GameObjects package is in your project and that it is compiling with no errors, then click the _Enable Netcode for GameObjects Support_ button on the `ObjectQuerier`. Then wait for the project to recompile. If the button state changes to _Disable Netcode for GameObjects Support_, the process has been carried out correctly.
 
 ![NetcodeEnable](https://pressfstudios.github.io/assets/images/NGOEnable.png)
 
@@ -154,87 +158,29 @@ private void Update()
 ```
 **It is suggested to always check if `Object()` is not null as network spawning can take multiple frames depending on RTT and other networking factors**
 
-#### Header 4
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+## Search and Validate Window
 
-##### Header 5
+To simplify the ID search and copy/paste process, there is a helper window which can be accessed from _Tools > Press F Studios > Object Identifier Search_ which has 2 tabs:
 
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
+#### Search
 
-###### Header 6
+The Search tab shows a list of all identifiable objects in the project. 
+_**DEBUGGING NOTE:** Should this list for whatever reason glitch or behave/display incorrectly, find the following file and set its list length to 0: _Assets > Resources > ObjectIdentifierSearchDatabase. After that re-open each scene in your project individually **or** execute the Validate process TWICE (the first will show errors and the second should fix everything as it finds the references again)._
 
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
+Objects that appear will show the ID, name of the GameObject in the scene, and name of the scene the object is in. Objects in other scenes only have 1 button to copy the ID (bottom right corner), while objects in a currently open scene will have a second button which allows for quick heirarchy object selection.
 
-### There's a horizontal rule below this.
+The search bar allows you to search both by name and/or ID.
 
-* * *
+#### Validate
 
-### Here is an unordered list:
+The Validate tab allows you to scan for missing/incorrect references in your project.
+Firstly, click _Validate_.
+Leaving an `IndentifiableObjectReference` blank or with an incorrect code (unless it is marked as `Runtime` in its constrctor), will result in it showing up in the invalid list. For this reason marking all references that should be empty by default as `Runtime` (as mentioned above in the runtime spawning section) is highly suggested. 
+If the incorrect reference in the list is in the current scene, a button to quickly select the object will appear for each entry.
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
+In order for elements to go away from the list, you need to run the _Validate_ process once more.
 
-### And an ordered list:
+**It is highly suggested to run a validity check before building to help spot any referencing errors that might be present**
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+## Debugger
