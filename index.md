@@ -166,6 +166,7 @@ To simplify the ID search and copy/paste process, there is a helper window which
 #### Search
 
 The Search tab shows a list of all identifiable objects in the project. 
+
 _**DEBUGGING NOTE:** Should this list for whatever reason glitch or behave/display incorrectly, find the following file and set its list length to 0: _Assets > Resources > ObjectIdentifierSearchDatabase. After that re-open each scene in your project individually **or** execute the Validate process TWICE (the first will show errors and the second should fix everything as it finds the references again)._
 
 Objects that appear will show the ID, name of the GameObject in the scene, and name of the scene the object is in. Objects in other scenes only have 1 button to copy the ID (bottom right corner), while objects in a currently open scene will have a second button which allows for quick heirarchy object selection.
@@ -176,7 +177,9 @@ The search bar allows you to search both by name and/or ID.
 
 The Validate tab allows you to scan for missing/incorrect references in your project.
 Firstly, click _Validate_.
+
 Leaving an `IndentifiableObjectReference` blank or with an incorrect code (unless it is marked as `Runtime` in its constrctor), will result in it showing up in the invalid list. For this reason marking all references that should be empty by default as `Runtime` (as mentioned above in the runtime spawning section) is highly suggested. 
+
 If the incorrect reference in the list is in the current scene, a button to quickly select the object will appear for each entry.
 
 In order for elements to go away from the list, you need to run the _Validate_ process once more.
@@ -186,8 +189,11 @@ In order for elements to go away from the list, you need to run the _Validate_ p
 ## Debugger
 
 The debugger can be opened through _Tools > Press F Studios > Object Identifier Debugger_.
+
 This window shows every `IdentifiableObject` that is currently reachable (in a loaded scene).
+
 This can be helpful to see if an object is not registering correctly.
 
 ## Help
+
 If you have any questions, run into any issues, or have pre-purchase questions about any product, please do not hesitate to contact us via <a href="mailto:info@pressfstudio.com">email</a> , join our [Discord](https://discord.gg/r4QcysF93v), or reach us through our [Website](https://pressfstudio.com/)
