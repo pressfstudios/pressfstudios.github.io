@@ -13,6 +13,8 @@ public GameObject directObjectReference; //Only supports scene-scope references
 public IdentifiableObjectReference idBasedReference; //Supports across-scene references  
 ```
 
+![Comparison](https://pressfstudios.github.io/assets/images/DefaultVsIdRef.png)
+
 The editor difference would then be as follows:
 
 ## Header 2
