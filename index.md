@@ -60,14 +60,51 @@ void Start()
   objectReference.Object().transform.position = Vector3.zero;
 }
 ```
-_It is suggested that you do not cache objectReference.Object() as it is already cached behind the scenes and doing so will just result in creating redundant references to the same GameObject_
+_It is suggested that you do not cache objectReference.Object() as it is already cached behind the scenes and doing so will just result in creating redundant references to the same GameObject._
 
 **If the object is in a scene not currently loaded, calling `.Object()` will return `null`, therefore it is suggested to wrap any executions on `.Object()` inside a `if (reference.Object())`.**
 
 #### ID from GameObject
-If an object has 
+If an object has an ID assigned to it (if it has an `IdentifiableObject` component on it), you can get its ID at any point by using hte following code:
+```c#
+public GameObject directObjectReference;
+public IdentifiableObjectReference idBasedReference;
+
+private void Start()
+{
+  ObjectQuerier.GetIdForObject(directObjectReference, out idBasedReference);
+      
+  //use idBasedReference here, serialize it, or whatever else you want to do...
+  if (idBasedReference.Object())
+  {
+    idBasedReference.Object().transform.position = Vector3.zero;    
+  }
+}
+```
+_using `ObjectQuerier.GetIdForObject(GameObject obj, out IdentifiableObjectReference outRef)` is much more performant than doing a `GetComponent` check and therefore it is the suggested method._
 
 #### Referencing runtime spawned Identifiable Objects
+Usually, GameObjects are spawned in a scene by getting/storing a reference to a prefab and instantiating that into the scene. It is suggested, however, when spawning an object with an `IdentifiableObejct` component assigned to it, you rather store a reference to the `IdentifiableObject` component and instantiate that instead, which will allow you to store an ID reference without having to do a `GetComponent` call:
+```c#
+public IdentifiableObject objectPrefab;
+
+  private void Start()
+  {
+    IdentifiableObjectReference runtimeObjectReference = Instantiate(objectPrefab);
+  }
+```
+
+For debugging or structural purposes, you may want to have an `IdentifiableObjectReference` as a public (or anyways as a visible field in the inspector). In this case - should the reference not be meant for setup in the editor but only meant for assigning at runtime - it is suggested (but not required) to set the `IdentifiableObjectReference` to `IdentifiableObjectReferenceType.Runtime` as follows:
+```c#
+public IdentifiableObject objectPrefab;
+public IdentifiableObjectReference runtimeObjectReference;
+
+private void Start()
+{
+  runtimeObjectReference = Instantiate(objectPrefab);
+}
+```
+**This will make the field unassignable in editor and will prevent the reference from showing up as "invalid" in the validator.**
 
 #### Header 4
 
