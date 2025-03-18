@@ -94,7 +94,7 @@ public IdentifiableObject objectPrefab;
   }
 ```
 
-For debugging or structural purposes, you may want to have an `IdentifiableObjectReference` as a public (or anyways as a visible field in the inspector). In this case - should the reference not be meant for setup in the editor but only meant for assigning at runtime - it is suggested (but not required) to set the `IdentifiableObjectReference` to `IdentifiableObjectReferenceType.Runtime` as follows:
+For debugging or structural purposes, you may want to have an `IdentifiableObjectReference` as a public (or anyways visible) field. In this case - should the reference not be meant for setup in the editor but only meant for assigning at runtime - it is suggested (but not required) to set the `IdentifiableObjectReference` to `IdentifiableObjectReferenceType.Runtime` as follows:
 ```c#
 public IdentifiableObject objectPrefab;
 public IdentifiableObjectReference runtimeObjectReference = new IdentifiableObjectReference(IdentifiableObjectReference.IdentifiableObjectReferenceType.Runtime);
@@ -105,6 +105,32 @@ private void Start()
 }
 ```
 **This will make the field unassignable in editor and will prevent the reference from showing up as "invalid" in the validator.**
+
+#### Spawning Identifiable Objects with a specific ID
+Especially when working with save systems, you might want to keep persistent the ID of objects that are spawned in scene throughout gameplay so that they can correctly match and reflect the ID of objects in your save data/save files (or you just simply want to use your own runtime object ID assigning logic).
+If you instantiate an `IndentifiableObject` normally as seen above in the _"Referencing runtime spawned Identifiable Objects"_ section, a random ID will be assigned, which might not be what you want.
+You can instead use the `SpawnInSceneWithDefinedId(string id)` call to make sure the object is assigned a specific ID:
+```c#
+public IdentifiableObject objectPrefab;
+public IdentifiableObjectReference runtimeObjectReference = new IdentifiableObjectReference(IdentifiableObjectReference.IdentifiableObjectReferenceType.Runtime);
+
+private void Start()
+{
+  runtimeObjectReference = objectPrefab.SpawnInSceneWithDefinedId("your-wanted-object-id");
+}
+```
+**Be careful when using this. Assigning the same ID to multiple objects is not supported and trying to do so will cause errors. It is suggested that you always let IDs be randomised uless you are trying to re-spawn previously assigned IDs which you already know are unique (e.g. object IDs from a previous game session).**
+
+## Netcode for GameObjects support
+### Getting Started
+To enable Netcode for GameObjects support, first, make sure the Netcode for GameObjects package is in your project and that it is compiling with no errors, then click the _Enable Netcode for GameObjects Support_ button on the ObjectQuerier. Then wait for the project to recompile. If the button state changes to Disable Netcode for GameObjects Support_, the process has been carried out correctly.
+ ![NetcodeEnable](https://pressfstudios.github.io/assets/images/NGOEnable.png)
+
+ **Note that doing this changes the `IdentifiableObject` and `ObjectQuerier` components to `NetworkBehaviour`, and will require `NetworkObject` components to be assigned to any object with either of those scripts assigned.**
+
+ #### Spawn with ID over Network
+You can spawn an `IdentifiableObject` on all clients through a single spawn call:
+
 
 #### Header 4
 
