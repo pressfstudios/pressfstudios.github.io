@@ -8,7 +8,7 @@ Welcome to the Press F Studios public asset documentation page.
 
 FId is a tool designed to replace direct object referencing where necessary, for example:
 
-```C#
+```c#
 public GameObject directObjectReference; //Only supports scene-scope references
 public IdentifiableObjectReference idBasedReference; //Supports across-scene references  
 ```
@@ -30,7 +30,7 @@ The editor difference is as follows:
 5.  Alternatively, you can open the _Object Identifier Search_ window, search, and copy the code of any identifiable object in your project.
 ![SearchCopy](https://pressfstudios.github.io/assets/images/CopyFromSearch.png)
 6.  Write a new line of code to create an instance of _IdentifiableObjectReference_ that will draw in the inspector. This can be done on any _MonoBehaviour_:
-```C#
+```c#
 public IdentifiableObjectReference exampleObjectReference;
 ```
 7.  Paste the code you previously copied into the inspector drawer of this newly created field.
@@ -43,7 +43,7 @@ Using FId in code is extremely simple.
 
 #### Object from ID
 Usually, objects are referenced and accessed as follows:
-```C#
+```c#
 public GameObject gameObjectReference;
 
 void Start()
@@ -52,7 +52,7 @@ void Start()
 }
 ``` 
 You can similarly access the object from its reference at any point in your code as follows by using `referenceInstance.Object()`:
-```C#
+```c#
 public IdentifiableObjectReference objectReference;
 
 void Start()
