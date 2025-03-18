@@ -8,7 +8,7 @@ Welcome to the Press F Studios public asset documentation page.
 
 FId is a tool designed to replace direct object referencing where necessary, for example:
 
-```c#
+```C#
 public GameObject directObjectReference; //Only supports scene-scope references
 public IdentifiableObjectReference idBasedReference; //Supports across-scene references  
 ```
@@ -30,29 +30,44 @@ The editor difference is as follows:
 5.  Alternatively, you can open the _Object Identifier Search_ window, search, and copy the code of any identifiable object in your project.
 ![SearchCopy](https://pressfstudios.github.io/assets/images/CopyFromSearch.png)
 6.  Write a new line of code to create an instance of _IdentifiableObjectReference_ that will draw in the inspector. This can be done on any _MonoBehaviour_:
-```c#
+```C#
 public IdentifiableObjectReference exampleObjectReference;
 ```
 7.  Paste the code you previously copied into the inspector drawer of this newly created field.
 ![ValidRef](https://pressfstudios.github.io/assets/images/ValidReference.png)
 
 
-### Header 3
+## Code
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
+Using FId in code is extremely simple.
+
+#### Object from ID
+Usually, objects are referenced and accessed as follows:
+```C#
+public GameObject gameObjectReference;
+
+void Start()
+{
+  gameObjectReference.transform.position = Vector3.zero;
+}
+``` 
+You can similarly access the object from its reference at any point in your code as follows by using `referenceInstance.Object()`:
+```C#
+public IdentifiableObjectReference objectReference;
+
+void Start()
+{
+  objectReference.Object().transform.position = Vector3.zero;
 }
 ```
+_It is suggested that you do not cache objectReference.Object() as it is already cached behind the scenes and doing so will just result in creating redundant references to the same GameObject_
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
+**If the object is in a scene not currently loaded, calling `.Object()` will return `null`, therefore it is suggested to wrap any executions on `.Object()` inside a `if (reference.Object())`.**
+
+#### ID from GameObject
+If an object has 
+
+#### Referencing runtime spawned Identifiable Objects
 
 #### Header 4
 
