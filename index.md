@@ -129,8 +129,27 @@ To enable Netcode for GameObjects support, first, make sure the Netcode for Game
  **Note that doing this changes the `IdentifiableObject` and `ObjectQuerier` components to `NetworkBehaviour`, and will require `NetworkObject` components to be assigned to any object with either of those scripts assigned.**
 
  #### Spawn with ID over Network
-You can spawn an `IdentifiableObject` on all clients through a single spawn call:
+You can spawn an `IdentifiableObject` on all clients through a single spawn call (from Host or Server):
+```c#
+public NetworkObject networkObjectPrefab;
 
+public IdentifiableObjectReference runtimeObjectReference = new IdentifiableObjectReference(IdentifiableObjectReference.IdentifiableObjectReferenceType.Runtime);
+
+private void Start()
+{
+  runtimeObjectReference = 
+      networkObjectPrefab.SpawnNetworkObjectWithDefinedId(Vector3.zero, Quaternion.identity, "your-wanted-object-id");
+}
+
+private void Update()
+{
+  if (runtimeObjectReference.Object())
+  {
+    Debug.Log($"Object Spawned with ID: {runtimeObjectReference.Identifier}");
+  }
+}
+```
+**It is suggested to always check if `Object()` is not null as network spawning can take multiple frames depending on RTT and other networking factors**
 
 #### Header 4
 
