@@ -97,7 +97,7 @@ public IdentifiableObject objectPrefab;
 For debugging or structural purposes, you may want to have an `IdentifiableObjectReference` as a public (or anyways as a visible field in the inspector). In this case - should the reference not be meant for setup in the editor but only meant for assigning at runtime - it is suggested (but not required) to set the `IdentifiableObjectReference` to `IdentifiableObjectReferenceType.Runtime` as follows:
 ```c#
 public IdentifiableObject objectPrefab;
-public IdentifiableObjectReference runtimeObjectReference;
+public IdentifiableObjectReference runtimeObjectReference = new IdentifiableObjectReference(IdentifiableObjectReference.IdentifiableObjectReferenceType.Runtime);
 
 private void Start()
 {
