@@ -2,17 +2,14 @@
 layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+# FId - Unique Object ID Reference System
 
-[Link to another page](./another-page.html).
+FId is a tool designed to replace direct object referencing where necessary, for example:
 
-There should be whitespace between paragraphs.
-
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
-
-# Header 1
-
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+```c#
+public GameObject directObjectReference; //Only supports scene-scope references
+public IdentifiableObjectReference idBasedReference; //Supports across-scene references  
+```
 
 ## Header 2
 
