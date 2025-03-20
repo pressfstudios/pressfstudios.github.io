@@ -126,6 +126,9 @@ private void Start()
 * * *
 
 ## Netcode for GameObjects support
+
+**Important note:** Netcode for GameObjects (NGO) forces all objects with `IdentifiableObject` to become `NetworkObjects`. NGO support makes sure that objects maintain the same ID both on host/server and clients. It is **very important to note** that this adds a 1-frame+RTT ID sync delay depending on network conditions. This means all ID generation and sync code is moved from `Awake()` to `Start()` to account for how `NetworkObject` syncing works in NGO, which will cause all `IdentifiableObjectReference` queries to be `null` for frame 1 of the object's instantiation. Please keep this in mind and follow good coding standards by verifying object reference validity before executing commands on it, by encapsulating any code in a `if (objectReference.Object()) {...}` check.
+
 ### Getting Started
 To enable Netcode for GameObjects support, first, make sure the Netcode for GameObjects package is in your project and that it is compiling with no errors, then click the _Enable Netcode for GameObjects Support_ button on the `ObjectQuerier`. Then wait for the project to recompile. If the button state changes to _Disable Netcode for GameObjects Support_, the process has been carried out correctly.
 
