@@ -57,4 +57,29 @@ public class MyService: FService
 
 That is all for the service side of the tool.
 
+## Bootstrapper
+
+### The Editor
+
+You can open the bootstrap window by going to `Tools/PressF/FBootstrapper Setup`.
+
+![Bootstrap Editor](https://pressfstudios.github.io/assets/images/BootstrapperEditor.png)
+
+As seen above, there are 4 sections to this editor. The first are is the list at the top of the window under Default Spawn Prefabs. In this list you can drag and drop any `GameObject` prefabs you want to spawn MOST OF THE TIME. These can be things like an Audio Manager, a HUD prefab, or anything else like that.
+
+The section under this will have a region for every scene added to your build settings. Under each of these you can control 3 things:
+- Whether or not on this scene you want to spawn the common, "defaut", prefabs you defined above in the general section (this can be done by toggling the `Spawn Default Prefabs` option).
+- What GameObject prefabs you want to spawn in this scene specifically (these can be dragged and dropped to the `Scene-Specific Definition` list area).
+- What prefab Packages you want to load in this scene specifically (more on this later, but these can be dragged and dropped in the `Scene-Specific Packages` list area).
+
+### The scene detail viewer
+
+You can see a detailed breakdown of every gameobject that will be spawned in a scene in list format if you click the `i` button next to the scene name in the Editor window.
+
+![Bootstrap Scene Detail View](https://pressfstudios.github.io/assets/images/BootstrapperSceneDetails.png)
+
+Here, you will see a list of all the objects that will be spawned in the scene, as well as what they are included in. There is also a search bar at the top if you want to quickly query if an object is being spawned.
+
+### Packages
+
 <!-- [back](./) -->
