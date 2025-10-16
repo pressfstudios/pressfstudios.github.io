@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Another page
-description: This is just another page
+title: Press F Studios
+description: FID Tool Docs
 permalink: /tools/fID
 ---
 

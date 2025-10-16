@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Bootstrap and Services
-description: Docs
+title: Press F Studios
+description: Bootstrap and Service Manager Tool Docs
 permalink: /tools/service-manager
 ---
 
