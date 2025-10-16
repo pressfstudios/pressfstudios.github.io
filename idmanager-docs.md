@@ -1,12 +1,11 @@
 ---
 layout: default
+title: Another page
+description: This is just another page
+permalink: /tools/fID
 ---
 
-Welcome to the Press F Studios public asset documentation page.
-
-* * *
-
-<!-- # FId - Unique Object ID Reference System
+# FId - Unique Object ID Reference System
 
 FId is a tool designed to replace direct object referencing where necessary, for example:
 
@@ -198,8 +197,4 @@ The debugger can be opened through _Tools > Press F Studios > Object Identifier 
 
 This window shows every `IdentifiableObject` that is currently reachable (in a loaded scene).
 
-This can be helpful to see if an object is not registering correctly. -->
-
-## Help
-
-If you have any questions, run into any issues, or have pre-purchase questions about any product, please do not hesitate to contact us via <a href="mailto:info@pressfstudio.com">email</a> , join our [Discord](https://discord.gg/r4QcysF93v), or reach us through our [Website](https://pressfstudio.com/)
+This can be helpful to see if an object is not registering correctly.
