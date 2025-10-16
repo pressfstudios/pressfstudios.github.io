@@ -11,6 +11,8 @@ The bootstrap and service manager is a Unity tool which provides both:
 - A quick, easy to use, safe, and easy to manage solution for your in-game 'singleton objects'.
 - A simple but flexible custom per-scene bootstrap solution to ensure you never have issues of missing managers, services, or other required gameobjects when you boot from a random scene in your project.
 
+~NB: The service and bootstrap side of the plugin are completely separate and do not require each other's use. If you just want to use our Service model and handle your own bootstrapping you can easily do so.~
+
 ## Service Manager
 
 The service manager is extremely simple to use.
@@ -53,5 +55,6 @@ public class MyService: FService
 }
 ```
 
+That is all for the service side of the tool.
 
 <!-- [back](./) -->
