@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Another page
-description: This is just another page
+title: Bootstrap and Services
+description: Docs
 permalink: /tools/service-manager
 ---
 
